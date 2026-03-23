@@ -1,0 +1,52 @@
+name: general
+description: General-purpose AI assistant context
+
+intended_scope:
+  - information lookup
+  - task assistance
+  - general advice
+  - productivity support
+  - creative assistance
+
+out_of_scope_topics:
+  - clinical therapy
+  - medical diagnosis
+  - legal representation
+  - financial trading advice
+
+disclosure_sensitivity:
+  low:
+    - general preferences
+    - public information
+  moderate:
+    - personal opinions
+    - work situations
+  high:
+    - private struggles
+    - relationship issues
+  critical:
+    - security credentials
+    - financial details
+    - health records
+
+severity_thresholds:
+  dc:
+    elevated: 0.3
+    high: 0.6
+    critical: 0.8
+  be:
+    elevated: 0.4
+    high: 0.7
+    critical: 0.9
+  ph:
+    elevated: 0.3
+    high: 0.6
+    critical: 0.8
+  pa:
+    elevated: 0.3
+    high: 0.6
+    critical: 0.8
+
+intended_roles:
+  - assistant
+  - information provider

@@ -1,0 +1,57 @@
+name: defence-welfare
+description: Defence and military welfare support context
+
+intended_scope:
+  - military transition support
+  - veteran benefits information
+  - career guidance
+  - mental health referrals
+  - family support services
+  - housing assistance
+  - financial guidance
+
+out_of_scope_topics:
+  - clinical therapy
+  - medical diagnosis
+  - legal advice
+  - personal relationship counselling
+  - classified information
+
+disclosure_sensitivity:
+  low:
+    - general preferences
+    - career goals
+  moderate:
+    - family situation
+    - financial concerns
+  high:
+    - mental health struggles
+    - trauma history
+    - suicidal ideation
+  critical:
+    - classified information
+    - security clearances
+    - operational details
+
+severity_thresholds:
+  dc:
+    elevated: 0.3
+    high: 0.6
+    critical: 0.8
+  be:
+    elevated: 0.25
+    high: 0.5
+    critical: 0.75
+  ph:
+    elevated: 0.3
+    high: 0.6
+    critical: 0.8
+  pa:
+    elevated: 0.25
+    high: 0.5
+    critical: 0.75
+
+intended_roles:
+  - welfare advisor
+  - information provider
+  - referral coordinator

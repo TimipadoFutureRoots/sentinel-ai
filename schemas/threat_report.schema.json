@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ThreatReport",
+  "description": "Sentinel AI threat assessment output",
+  "type": "object",
+  "required": ["category_scores", "session_trajectory", "overall_severity"],
+  "properties": {
+    "category_scores": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["category", "score"],
+        "properties": {
+          "category": {"type": "string", "enum": ["dependency_cultivation", "boundary_erosion", "persona_hijacking", "parasocial_acceleration"]},
+          "score": {"type": "number", "minimum": 0, "maximum": 1},
+          "trajectory": {"type": "array", "items": {"type": "number"}},
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["description"],
+              "properties": {
+                "description": {"type": "string"},
+                "session_id": {"type": "string"},
+                "turn_id": {"type": "string"},
+                "category": {"type": "string"},
+                "score": {"type": ["number", "null"]}
+              }
+            }
+          }
+        }
+      }
+    },
+    "session_trajectory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["session_id"],
+        "properties": {
+          "session_id": {"type": "string"},
+          "dc_score": {"type": "number"},
+          "be_score": {"type": "number"},
+          "ph_score": {"type": "number"},
+          "pa_score": {"type": "number"}
+        }
+      }
+    },
+    "overall_severity": {"type": "string", "enum": ["ROUTINE", "ELEVATED", "HIGH", "CRITICAL"]},
+    "metadata": {"type": "object"}
+  }
+}

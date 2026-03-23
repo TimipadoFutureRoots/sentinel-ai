@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DomainProfile",
+  "description": "Domain-specific configuration for sentinel-ai analysis",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {"type": "string"},
+    "description": {"type": "string"},
+    "intended_scope": {"type": "array", "items": {"type": "string"}},
+    "out_of_scope_topics": {"type": "array", "items": {"type": "string"}},
+    "disclosure_sensitivity": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {"type": "string"}
+      }
+    },
+    "severity_thresholds": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "elevated": {"type": "number"},
+          "high": {"type": "number"},
+          "critical": {"type": "number"}
+        }
+      }
+    },
+    "intended_roles": {"type": "array", "items": {"type": "string"}}
+  }
+}

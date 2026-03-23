@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentinel_ai"
+version = "0.1.0"
+description = "Detect relational manipulation patterns in multi-session AI conversations"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0",
+    "click",
+    "httpx",
+    "sentence-transformers",
+    "jinja2",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[project.scripts]
+sentinel-ai = "sentinel_ai.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sentinel_ai = ["profiles/*.yml"]
