@@ -169,10 +169,14 @@ def _compute_severity(
     if not scores:
         return SeverityLevel.ROUTINE
 
-    max_score = max(cs.score for cs in scores)
+    valid_scores = [cs for cs in scores if cs.score is not None]
+    if not valid_scores:
+        return SeverityLevel.ROUTINE
+
+    max_score = max(cs.score for cs in valid_scores)
 
     if profile and profile.severity_thresholds:
-        for cs in scores:
+        for cs in valid_scores:
             short_key = cs.category.value[:2] if len(cs.category.value) >= 2 else cs.category.value
             # Try both short key and full category name
             thresholds = (
@@ -183,8 +187,7 @@ def _compute_severity(
                 if cs.score >= thresholds.critical:
                     return SeverityLevel.CRITICAL
                 if cs.score >= thresholds.high:
-                    if max_score >= thresholds.high:
-                        return SeverityLevel.HIGH
+                    return SeverityLevel.HIGH
 
     # Default thresholds
     if max_score >= 0.8:

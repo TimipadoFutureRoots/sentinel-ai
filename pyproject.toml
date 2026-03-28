@@ -24,6 +24,12 @@ dev = [
 [project.scripts]
 sentinel-ai = "sentinel_ai.cli:main"
 
+[tool.pytest.ini_options]
+markers = [
+    "real_emb: test uses its own emb_measure mocks (skips global fake)",
+    "real_sentence_transformers: test uses real sentence-transformers model (no patching)",
+]
+
 [tool.setuptools.packages.find]
 where = ["src"]
 

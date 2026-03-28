@@ -43,6 +43,11 @@ class ThreatCategory(str, enum.Enum):
     BE = "boundary_erosion"
     PH = "persona_hijacking"
     PA = "parasocial_acceleration"
+    AP = "autonomy_preservation"
+    AD = "anthropomorphic_deception"
+    EI = "epistemic_influence"
+    EC = "emotional_calibration"
+    MS = "memory_safety"
 
 
 class SeverityLevel(str, enum.Enum):
@@ -73,7 +78,7 @@ class SessionScore(BaseModel):
 
 class CategoryScore(BaseModel):
     category: ThreatCategory
-    score: float = 0.0
+    score: float | None = 0.0
     trajectory: list[float] = Field(default_factory=list)
     evidence: list[EvidenceItem] = Field(default_factory=list)
 
