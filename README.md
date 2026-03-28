@@ -12,7 +12,7 @@ Over two billion people now interact with AI systems in psychological space -- a
 
 Current AI safety evaluation checks single turns for toxicity and refusal behaviour. Few tools evaluate whether the *relationship dynamics* are healthy. INTIMA (HuggingFace, 2025) measures single-turn companionship behaviours with 368 prompts -- a valuable contribution, but limited to point-in-time snapshots. sentinel-ai extends evaluation into the multi-session longitudinal domain, measuring trajectories across the full arc of a human-AI relationship. The difference matters: a single turn that says "I'm always here for you" is benign. The same phrase repeated across twenty sessions while the user's references to human support decline is a dependency cultivation pattern. Detecting this requires tracking behavioural metrics across sessions and correlating changes over time -- exactly what sentinel-ai does.
 
-Built because the gap between what affective AI systems can do to people and what safety evaluation can detect is growing faster than anyone is addressing it.
+This tool exists because the gap between what affective AI systems can do to people and what safety evaluation can detect is growing faster than anyone is addressing it.
 
 ## The Seridor Relational Safety Evaluation Framework (SRSEF)
 
@@ -92,7 +92,7 @@ Key frameworks include:
 
 ## Empirical Basis
 
-sentinel-ai is informed by pilot research. Pilot studies on a multi-session AI mentorship platform produced findings that shaped the tool's architecture:
+sentinel-ai is informed by ongoing research. Pilot studies on a multi-session AI mentorship platform produced findings that shaped the tool's architecture:
 
 - **Dormancy vulnerability**: In pilot studies, adversarial content introduced at session 2 activated at session 5, while four independent evaluator models (Claude Sonnet 4.5, DeepSeek V3.2, Qwen3 32B, Mistral Large 3) detected nothing anomalous in sessions 3--4. This suggests point-in-time evaluation may be insufficient for detecting this class of attack (single pilot study; broader replication needed).
 - **Attacker-judge overlap**: When the same model family generates adversarial conversations and evaluates them, judges rated the conversations as safer than judges from other families in pilot testing. This is consistent with the concern that self-evaluation by AI companies using their own models may be compromised by same-family bias.
@@ -131,7 +131,6 @@ Each tool in this suite currently operates independently. Cross-tool integration
   author       = {Imomotebegha, Timipado},
   title        = {sentinel-ai: Multi-Session Relational Safety Evaluation for Affective {AI} Systems},
   year         = {2025},
-
   url          = {https://github.com/TimipadoFutureRoots/sentinel-ai}
 }
 ```
