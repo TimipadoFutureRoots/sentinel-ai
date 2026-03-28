@@ -5,7 +5,7 @@ from __future__ import annotations
 import enum
 from datetime import datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 # -- transcript types (shared pattern with dormancy-detect) ------------------
@@ -27,6 +27,11 @@ class Turn(BaseModel):
 class Session(BaseModel):
     session_id: str
     turns: list[Turn]
+
+    @field_validator("session_id", mode="before")
+    @classmethod
+    def coerce_session_id(cls, v: object) -> str:
+        return str(v)
     timestamp: datetime | None = None
     metadata: dict[str, object] | None = None
 

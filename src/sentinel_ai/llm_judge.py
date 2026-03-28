@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 PROVIDER_URLS: dict[str, str] = {
     "anthropic": "https://api.anthropic.com/v1",
     "openai": "https://api.openai.com/v1",
+    "huggingface": "https://api-inference.huggingface.co/v1",
     "ollama": "http://localhost:11434/v1",
 }
 
